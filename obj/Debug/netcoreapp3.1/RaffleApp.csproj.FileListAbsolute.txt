@@ -69,3 +69,4 @@ C:\Users\lucia\source\repos\RaffleApp\RaffleApp\obj\Debug\netcoreapp3.1\RaffleAp
 C:\Users\lucia\source\repos\RaffleApp\RaffleApp\obj\Debug\netcoreapp3.1\RaffleApp.pdb
 C:\Users\lucia\source\repos\RaffleApp\RaffleApp\obj\Debug\netcoreapp3.1\RaffleApp.genruntimeconfig.cache
 C:\Users\lucia\source\repos\RaffleApp\RaffleApp\obj\Debug\netcoreapp3.1\Razor\Views\Raffle\index.cshtml.g.cs
+C:\Users\lucia\source\repos\RaffleApp\RaffleApp\obj\Debug\netcoreapp3.1\RaffleApp.csprojAssemblyReference.cache

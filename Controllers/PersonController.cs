@@ -11,8 +11,7 @@ namespace RaffleApp.Controllers
         public List<Person> GetAll()
         {
             var personRepository = new SqlRepository<Person>(new RaffleContext());
-            var allPeopleInRepo = personRepository.GetAll().ToList();
-            return allPeopleInRepo;
+            return personRepository.GetAll().ToList();
         }
 
         public List<Person> PopulateDatabase()
