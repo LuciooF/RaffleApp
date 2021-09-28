@@ -1,0 +1,72 @@
+﻿<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+<div id="page-wrapper" v-cloak>
+    <div class="row">
+        <div class="col-lg-5 text-center">
+            <h1 class="display-4">Raffle!</h1>
+            <div class="row">
+                <div class="col-lg-5"><h3>I want</h3></div>
+                <div class="col-lg-2"> <input class="input-group form-control" v-model="winnersCount" type="number" /></div>
+                <div class="col-lg-5"><h3>Winner/s!</h3></div>
+            </div>
+            <button class="alert-danger" v-on:click="PickRaffleWinner()">Pick raffle winners!</button>
+            <div v-if="winners.length > 0">
+                <h2 class="badge-success">Winners!</h2>
+                <div> <h5>ID, Name, Lastname</h5></div>
+                <div v-for="winner in winners">
+                    <div class="alert-success">{{winner.id}}, {{winner.firstName}}, {{winner.lastName}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 offset-lg-4 ">
+            <button class="alert-warning" v-on:click="PopulateDatabase">Clear and repopulate Database</button>
+            <div v-if="people.length > 0">
+                <h2>People in database</h2>
+                <div> <h5>ID, Name, Lastname</h5></div>
+                <div v-for="person in people">
+                    <div>{{person.id}}, {{person.firstName}}, {{person.lastName}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '#page-wrapper',
+        data: {
+            people: [],
+            winners: [],
+            winnersCount: 3,
+        },
+        methods: {
+            PopulateDatabase: function () {
+                var self = this;
+                axios.get('/person/populatedatabase')
+                    .then(response => {
+                        self.people = response.data;
+                    })
+                    .catch(error => {
+                        swal({ icon: 'error', text: error.response.data });
+                    })
+            },
+            PickRaffleWinner: function () {
+                var self = this;
+                axios.put('/raffle/pickrafflewinners/' + self.winnersCount)
+                    .then(response => {
+                        self.winners = response.data;
+                    })
+                    .catch(error => {
+                        swal({ icon: 'error', text: error.response.data });
+                    })
+            }
+        },
+        mounted: function () {
+            this.PopulateDatabase();
+        }
+    });
+</script>
