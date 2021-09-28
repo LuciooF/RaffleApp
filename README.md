@@ -12,5 +12,6 @@ Only two possible human errors are:
 1: Input number is higher than amount of people in database.
 2: Input number is a negative number.
 
+Uses microsoft Entity Framework
 Made use of interfaces and reusable code.
 Amount of code is minimum and very easy to read/improve.
