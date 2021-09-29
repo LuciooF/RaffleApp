@@ -1,5 +1,7 @@
 # RaffleApp
-Web application that populates a database with 20 "people" (Automatically these all have my name and a index identifier at the end)
+Web application that populates a database with 20 "people" (Automatically these all have my name and a index identifier at the end).
+Then on the website you can select a number of winners and will randomly generate n amount of winners and show them on screen.
+Has button to repopulate database which just removes all current Tables and generates new ones, with new ID's)
 
 Done using simple TDD.
 Backend was built using SOLID principles and for the frontend I used HTML, VUE, JS and Boostrap as well as SweetAlerts. (And MVC)
